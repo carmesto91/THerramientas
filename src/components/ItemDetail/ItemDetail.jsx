@@ -9,14 +9,14 @@ export const ItemDetail  = ({id, descripcion, precio, image, categoria, detalle}
     <div className='fila'>
     
   
-  <Card style={{ width: '18rem' }}>
+  <Card style={{ width: '35rem' }}>
     <Card.Img variant="top" src={image} />
     <Card.Body>
-    <Card.Title>{id}</Card.Title>
+    <Card.Title>Codigo: {id}</Card.Title>
       <Card.Title>{descripcion}</Card.Title>
-      <Card.Title>{precio}</Card.Title>
+      <Card.Title>Precio: ${precio}</Card.Title>
       <Card.Title>Categoria: {categoria}</Card.Title>
-      <Card.Title>Detalles {detalle}</Card.Title>
+      <Card.Title>Detalles: {detalle}</Card.Title>
       <ItemCount/>
       <Button variant="primary">
         Agregar al carrito

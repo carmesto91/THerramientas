@@ -4,6 +4,20 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-left: 10px;
+    text-align: center;
     margin-top: 10px;
+    align-items: center;
+    
+}
+.fila img{
+    width:270px;
+    align-self: center;
+}
+Button{
+    align-items: center;
+    justify-content: center;
+}
+.fila Button{
+    margin-top: 10px;
+    margin-left: 35%;
 }

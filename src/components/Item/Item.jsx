@@ -9,12 +9,12 @@ export const Item  = ({id, descripcion, precio, image, categoria}) => {
     <div className='fila'>
     
   
-  <Card style={{ width: '18rem' }}>
+  <Card style={{ width: '18rem', color:'darkblue'}}>
     <Card.Img variant="top" src={image} />
     <Card.Body>
     <Card.Title>{id}</Card.Title>
       <Card.Title>{descripcion}</Card.Title>
-      <Card.Title>{precio}</Card.Title>
+      <Card.Title>${precio}</Card.Title>
       <Card.Title>Categoria: {categoria}</Card.Title>
       <Link to={`/detail/${id}`}>
       <Button variant="primary">Ver Detalles</Button>
