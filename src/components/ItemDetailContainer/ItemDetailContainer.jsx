@@ -3,7 +3,7 @@ import {pedirProductos} from '../../helpers/pedirProductos'
 import {ImSpinner2} from 'react-icons/im'
 import {ItemDetail} from '../ItemDetail/ItemDetail'
 import { useParams } from 'react-router-dom'
-
+import {getFirestore} from '../../firebase/config'
 export const ItemDetailContainer = () => {
 
     const [item, setItem] = useState(null)
@@ -13,16 +13,23 @@ export const ItemDetailContainer = () => {
     const {itemId} = useParams()
 
     useEffect(() =>{
+      const db= getFirestore()
 
-        setLoading(true)
-        pedirProductos()
-            .then(res =>{
-                setItem( res.find( prod => prod.id === Number(itemId)))
-            })
-            .catch((error) => console.log(error))
-            .finally(() => {
-                setLoading(false)
-            })
+      const productos= db.collection('productos')
+
+       const item = productos.doc(itemId)
+       item.get()
+        .then((doc)=>{
+          setItem({
+        id: doc.id, ...doc.data()
+
+      })
+      .catch((err) => console.log(err))
+      .finally (() =>{
+        setLoading(false)
+      })
+        })
+
     },[itemId])
 
 

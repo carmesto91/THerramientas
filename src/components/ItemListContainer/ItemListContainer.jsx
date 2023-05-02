@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import './ItemListContainer.css'
-import { pedirProductos } from '../../helpers/pedirProductos.js'
+//import { pedirProductos } from '../../helpers/pedirProductos.js'
 import { ItemList } from '../itemList/ItemList'
 import {ImSpinner2} from 'react-icons/im'
 import { useParams } from 'react-router-dom'
-
+import {getFirestore} from '../../firebase/config.js'
 
 export const ItemListContainer = (props) => {
   
@@ -12,32 +12,33 @@ export const ItemListContainer = (props) => {
 
   const [loading, setLoading ] = useState(false)
   
-  //const param = useParams()
-
-  //console.log(param)
-  
+ 
   const {categoryId} = useParams()
 
 
   useEffect(()=>{
-    //efecto montaje, con un loading true
     setLoading(true)
-    pedirProductos()
+   const db =getFirestore();
+
+      //const productos =  db.collection('productos')
+      const productos = categoryId
+      ?db.collection('productos').where('categoria', '==',categoryId)
+      :db.collection('productos')
+      productos.get()
     .then((res)=>{
-      //imprimimos resp y guardamos en hook
-     if(categoryId){
-      setItems(res.filter(prod => prod.categoria === categoryId))
-     }else{
-      setItems(res)
-     }
+      const newItem = res.docs.map((doc)=>{
+        return {id: doc.id, ...doc.data()}
 
-      // console.log(res)
+      })
+        console.table(newItem)
+        setItems(newItem)
     })
-    //consologueamos errores
     .catch((error)=> console.log(error))
-    .finally(()=> {setLoading(false)})
-
-  }, [categoryId])
+    .finally(() =>{
+      setLoading(false)
+    } )
+ 
+  }, [categoryId, setLoading])
   
   
   

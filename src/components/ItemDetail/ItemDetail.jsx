@@ -1,9 +1,35 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import {Card, Button} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {ItemCount} from '../ItemCount/ItemCount.jsx'
+import { CartContext } from '../context/CartContext.jsx'
 
-export const ItemDetail  = ({id, descripcion, precio, image, categoria, detalle}) => {
+export const ItemDetail  = ({id,name, descripcion, precio, image, categoria, detalle, stock}) => {
+ 
+  const navigate = useNavigate()
+
+
+  const volverHaciaAtras=() =>{
+    navigate(-1)
+  }
+const {addToCart} = useContext(CartContext)
+
+ const [counter, setCounter] = useState(0)
+ 
+const sumarAlCarrito=() =>{
+  const newItem ={
+    id,
+    descripcion,
+    precio,
+    image,
+    categoria,
+    counter,
+    name
+  }
+  console.log(newItem)
+  addToCart(newItem)
+}
+
   //pasamos mediante props, cada propiedad de nuestro producto (objetos)
   return (
     <div className='fila'>
@@ -12,17 +38,21 @@ export const ItemDetail  = ({id, descripcion, precio, image, categoria, detalle}
   <Card style={{ width: '35rem' }}>
     <Card.Img variant="top" src={image} />
     <Card.Body>
-    <Card.Title>Codigo: {id}</Card.Title>
+    <Card.Title>Codigo: {name}</Card.Title>
       <Card.Title>{descripcion}</Card.Title>
       <Card.Title>Precio: ${precio}</Card.Title>
       <Card.Title>Categoria: {categoria}</Card.Title>
       <Card.Title>Detalles: {detalle}</Card.Title>
-      <ItemCount/>
-      <Button variant="primary">
+      <ItemCount max={stock} modify={setCounter} cantidad={counter}/>
+      <Button onClick={sumarAlCarrito}>
         Agregar al carrito
       </Button>
       
     </Card.Body>
+    <Button onClick={volverHaciaAtras} className='btn btn-success'>volver Atras</Button>
+    <Link to='/cart' className='btn btn-info'>
+      Ir al carrito
+    </Link>
   </Card>
 </div>
 

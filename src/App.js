@@ -12,11 +12,14 @@ import {
   Navigate,
   Route,
 } from 'react-router-dom'
-
+import { CartProvider } from './components/context/CartContext';
+import { CartScreen } from './components/CartScreen/CartScreen';
+import { Checkout } from './components/Checkout/Checkout';
 
 function App() {
+
   return (
-   
+   <CartProvider>
     <div className='app'>
       <Router>
         <NavBar/>
@@ -25,6 +28,8 @@ function App() {
             <Route path='/productos/:categoryId' element={<ItemListContainer/>}></Route>
             <Route path='/detail/:itemId' element={<ItemDetailContainer/>}/>
             <Route path='/counter' element={<ItemCount/>}/>
+            <Route path='/checkout' element={<Checkout />} />
+            <Route path='/cart' element={<CartScreen/>}/>
             <Route path='*' element={<Navigate to='/'/>}/>
         </Routes>
       </Router>
@@ -32,6 +37,7 @@ function App() {
 
 
     </div>
+    </CartProvider>
   );
 }
 
