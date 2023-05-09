@@ -1,0 +1,15 @@
+.listado{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.pret{
+    display: block;
+    text-align: center;
+}
+.botones{
+    display: flex;
+       
+    flex-direction: row;
+    margin-left: 70%;    
+}

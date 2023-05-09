@@ -1,15 +1,15 @@
 
-.fila{
+.items{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     text-align: center;
     margin-top: 10px;
-    align-items: center;
+    
     
 }
-.fila img{
+.items img{
     width:270px;
     align-self: center;
 }
@@ -17,7 +17,7 @@ Button{
     align-items: center;
     justify-content: center;
 }
-.fila Button{
+.items Button{
     margin-top: 10px;
     margin-left: 35%;
 }

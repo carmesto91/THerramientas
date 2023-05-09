@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {pedirProductos} from '../../helpers/pedirProductos'
 import {ImSpinner2} from 'react-icons/im'
-import {ItemDetail} from '../ItemDetail/ItemDetail'
+import {ItemDetail} from '../ItemDetail/ItemDetail.jsx'
 import { useParams } from 'react-router-dom'
 import {getFirestore} from '../../firebase/config'
 export const ItemDetailContainer = () => {

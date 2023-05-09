@@ -1,0 +1,33 @@
+.fila{
+    align-items: center;
+  
+    text-align: center;
+    margin-top: 10px;
+    align-content: center;
+}
+.volver{
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    align-items: center;
+    padding: 0.5rem;
+    width: 10rem;
+}
+.ir{
+    margin-left: 35%;
+    margin-right: 30%;
+    padding: 0.5rem;
+    width: 10rem;
+}
+.fila img{
+    width:270px;
+    align-self: center;
+}
+.fila Button{
+    align-items: center;
+    justify-content: center;
+        margin-top: 10px;
+        margin-left: 35%;
+    
+}

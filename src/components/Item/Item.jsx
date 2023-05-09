@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 export const Item  = ({id, name, descripcion, precio, image, categoria}) => {
   //pasamos mediante props, cada propiedad de nuestro producto (objetos)
   return (
-    <div className='fila'>
+    <div className='items'>
     
   
   <Card style={{ width: '18rem', color:'darkblue'}}>

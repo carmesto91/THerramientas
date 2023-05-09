@@ -6,6 +6,7 @@ import firebase from "firebase"
 import 'firebase/firestore'
 import {getFirestore} from '../../firebase/config'
 import Swal from 'sweetalert2'
+import './Checkout.css'
 
 export const Checkout = () => {
   
@@ -79,10 +80,12 @@ export const Checkout = () => {
 
 
     return (
-    <div>
+    <div >
         <h3>Terminar Compra</h3>
         <hr />
+        
         <form onSubmit={handleSubmit}  className='container mt-3'>
+        <div className='formulario'>
         <div className="form-group">
             <label htmlFor="email">Email</label>
             <input type="text" className="form-control" onChange={(e) => setEmail(e.target.value)} value={email}/></div>
@@ -95,9 +98,11 @@ export const Checkout = () => {
         <div className="form-group">
             <label htmlFor="telefono">Telefono</label>
             <input type="text" className="form-control" onChange={(e) => setTelefono(e.target.value)} value={telefono}/></div>
-
+            </div>
+            <div className='botonCheck'>
             <button type='submit' className='btn btn-success'>Finalizar</button>
             <Link to='/cart' className='btn btn-info'>Volver al Carrito</Link>
+            </div>
         </form>
 
     </div>
